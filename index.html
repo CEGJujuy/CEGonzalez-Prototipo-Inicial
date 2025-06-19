@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Configuración básica del documento -->
+    <meta charset="UTF-8" />
+    
+    <!-- Favicon del sistema educativo -->
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    
+    <!-- Configuración de viewport para responsive design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Título dinámico de la aplicación -->
+    <title data-default>Asistente Virtual Educativo - Tu compañero de aprendizaje inteligente</title>
+    
+    <!-- Meta tags para SEO y redes sociales -->
+    <meta name="description" content="Asistente virtual educativo basado en inteligencia artificial para estudiantes de secundaria. Responde preguntas académicas, promueve el aprendizaje autónomo y funciona offline." />
+    <meta name="keywords" content="educación, asistente virtual, inteligencia artificial, estudiantes, secundaria, aprendizaje, matemáticas, ciencias, historia" />
+    <meta name="author" content="Sistema Educativo Virtual" />
+    
+    <!-- Open Graph para redes sociales -->
+    <meta property="og:title" content="Asistente Virtual Educativo" />
+    <meta property="og:description" content="Tu compañero de aprendizaje inteligente para estudiantes de secundaria" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://asistente-educativo.com" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Asistente Virtual Educativo" />
+    <meta name="twitter:description" content="Sistema de IA educativa para estudiantes de secundaria" />
+    
+    <!-- Configuración para PWA (Progressive Web App) -->
+    <meta name="theme-color" content="#2563eb" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Asistente Educativo" />
+    
+    <!-- Preload de fuentes críticas para mejor rendimiento -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Configuración de seguridad -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    
+    <!-- Configuración para dispositivos móviles -->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    
+    <!-- Estilos inline críticos para evitar FOUC (Flash of Unstyled Content) -->
+    <style>
+      /* Estilos críticos para la carga inicial */
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+          'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background-color: #f3f4f6;
+      }
+      
+      /* Loader inicial mientras carga la aplicación */
+      .initial-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        color: white;
+      }
+      
+      .loader-spinner {
+        width: 50px;
+        height: 50px;
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-top: 4px solid white;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-bottom: 20px;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      .loader-text {
+        font-size: 18px;
+        font-weight: 500;
+        text-align: center;
+        opacity: 0.9;
+      }
+      
+      /* Oculta el loader cuando la app está lista */
+      .app-ready .initial-loader {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Loader inicial que se muestra mientras carga la aplicación -->
+    <div class="initial-loader" id="initialLoader">
+      <div class="loader-spinner"></div>
+      <div class="loader-text">
+        <div>Cargando Asistente Educativo...</div>
+        <div style="font-size: 14px; margin-top: 10px; opacity: 0.7;">
+          Preparando tu experiencia de aprendizaje
+        </div>
+      </div>
+    </div>
+    
+    <!-- Contenedor principal de la aplicación React -->
+    <div id="root"></div>
+    
+    <!-- Mensaje de fallback para navegadores sin JavaScript -->
+    <noscript>
+      <div style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #f3f4f6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: system-ui, sans-serif;
+        text-align: center;
+        padding: 20px;
+        box-sizing: border-box;
+      ">
+        <div style="max-width: 500px;">
+          <h1 style="color: #1f2937; margin-bottom: 20px;">
+            Asistente Virtual Educativo
+          </h1>
+          <p style="color: #6b7280; margin-bottom: 20px;">
+            Esta aplicación requiere JavaScript para funcionar correctamente.
+            Por favor, habilita JavaScript en tu navegador para acceder al
+            asistente educativo.
+          </p>
+          <div style="
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 15px;
+            color: #92400e;
+          ">
+            <strong>¿Cómo habilitar JavaScript?</strong><br>
+            1. Ve a la configuración de tu navegador<br>
+            2. Busca la sección de "Privacidad y seguridad"<br>
+            3. Habilita JavaScript<br>
+            4. Recarga esta página
+          </div>
+        </div>
+      </div>
+    </noscript>
+    
+    <!-- Script principal de la aplicación -->
+    <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Script para ocultar el loader inicial cuando la app esté lista -->
+    <script>
+      // Oculta el loader inicial después de que la aplicación se haya cargado
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          const loader = document.getElementById('initialLoader');
+          if (loader) {
+            loader.style.opacity = '0';
+            loader.style.transition = 'opacity 0.5s ease-out';
+            setTimeout(function() {
+              loader.style.display = 'none';
+              document.body.classList.add('app-ready');
+            }, 500);
+          }
+        }, 1000); // Mínimo 1 segundo para mostrar el loader
+      });
+      
+      // Manejo de errores globales
+      window.addEventListener('error', function(e) {
+        console.error('Error global capturado:', e.error);
+        // Aquí se podría implementar un sistema de reporte de errores
+      });
+      
+      // Manejo de promesas rechazadas
+      window.addEventListener('unhandledrejection', function(e) {
+        console.error('Promesa rechazada no manejada:', e.reason);
+        // Aquí se podría implementar un sistema de reporte de errores
+      });
+      
+      // Configuración para PWA
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          // Aquí se registraría el service worker para funcionalidad offline
+          console.log('Service Worker support detected');
+        });
+      }
+      
+      // Detección de conectividad para funcionalidad offline
+      window.addEventListener('online', function() {
+        console.log('Conexión restaurada');
+        // Aquí se podría sincronizar datos pendientes
+      });
+      
+      window.addEventListener('offline', function() {
+        console.log('Conexión perdida - modo offline activado');
+        // Aquí se podría mostrar una notificación al usuario
+      });
+    </script>
+  </body>
+</html>
